@@ -1,0 +1,69 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsMac>false</IsMac>
+    <IsMac Condition=" '$(OS)' == 'Unix' AND Exists('/Library/Frameworks') ">true</IsMac>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <Owners>Couchbase</Owners>
+    <Summary>A hosted LiteCore for use in testing</Summary>
+    <Title>LiteCoreServ</Title>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>Couchbase</Authors>
+	<RuntimeIdentifiers>win10-x64;osx.10.11-x64;ubuntu.16.04-x64</RuntimeIdentifiers>	
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE;DEBUG;NETCOREAPP1_1;LITECORE_PACKAGED;</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType></DebugType>
+    <DefineConstants>TRACE;RELEASE;NETCOREAPP1_1;LITECORE_PACKAGED;</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Packaging|AnyCPU' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType></DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE;RELEASE;NETCOREAPP1_1;LITECORE_PACKAGED;;RELEASE;NETCOREAPP1_1</DefineConstants>
+    <IntermediateOutputPath>obj\Release\netcoreapp1.1</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.1.1-beta" />
+    <PackageReference Include="System.Net.WebSockets.Client" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(OS)' == 'Windows_NT' OR '$(Configuration)' == 'Packaging' ">
+    <Content Include="$(MSBuildThisFileDirectory)..\vendor\couchbase-lite-core\build_cmake\x86\RelWithDebInfo\LiteCoreREST.dll">
+      <Link>x86\LiteCoreREST.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\vendor\couchbase-lite-core\build_cmake\x86\RelWithDebInfo\LiteCoreREST.pdb">
+      <Link>x86\LiteCoreREST.pdb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\vendor\couchbase-lite-core\build_cmake\x64\RelWithDebInfo\LiteCoreREST.dll">
+      <Link>x64\LiteCoreREST.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\vendor\couchbase-lite-core\build_cmake\x64\RelWithDebInfo\LiteCoreREST.pdb">
+      <Link>x64\LiteCoreREST.pdb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>	
+  <ItemGroup Condition=" $(IsMac) OR '$(Configuration)' == 'Packaging' ">
+    <Content Include="$(MSBuildThisFileDirectory)..\vendor\couchbase-lite-core\build_cmake\libLiteCoreREST.dylib">
+      <Link>libLiteCoreREST.dylib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>	
+  <ItemGroup Condition=" (!$(IsMac) AND '$(OS)' == 'Unix') OR '$(Configuration)' == 'Packaging' ">
+    <None Include="$(MSBuildThisFileDirectory)..\vendor\couchbase-lite-core\build_cmake\libLiteCoreREST.so">
+      <Link>libLiteCoreREST.so</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>	
+  <Import Project="..\LiteCoreServ.Shared\LiteCoreServ.Shared.projitems" Label="Shared" Condition="Exists('..\LiteCoreServ.Shared\LiteCoreServ.Shared.projitems')" />
+  <Import Project="..\vendor\couchbase-lite-core\CSharp\src\LiteCore.Shared\LiteCore.Shared.projitems" Label="Shared" Condition="Exists('..\vendor\couchbase-lite-core\CSharp\src\LiteCore.Shared\LiteCore.Shared.projitems')" />
+</Project>

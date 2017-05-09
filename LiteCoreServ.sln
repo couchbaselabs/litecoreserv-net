@@ -1,0 +1,24 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LiteCoreServ.Shared", "LiteCoreServ.Shared\LiteCoreServ.Shared.shproj", "{F8431439-C98C-4FA9-9623-6F0537BB492D}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LiteCore.Shared", "vendor\couchbase-lite-core\CSharp\src\LiteCore.Shared\LiteCore.Shared.shproj", "{C37DC024-8762-4BE4-9034-B2B5970C652C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiteCoreServ", "LiteCoreServ\LiteCoreServ.csproj", "{304A81E9-5A66-4C9F-892D-72DE8ACC876F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Packaging|Any CPU = Packaging|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{304A81E9-5A66-4C9F-892D-72DE8ACC876F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{304A81E9-5A66-4C9F-892D-72DE8ACC876F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{304A81E9-5A66-4C9F-892D-72DE8ACC876F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{304A81E9-5A66-4C9F-892D-72DE8ACC876F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{304A81E9-5A66-4C9F-892D-72DE8ACC876F}.Packaging|Any CPU.ActiveCfg = Packaging|Any CPU
+		{304A81E9-5A66-4C9F-892D-72DE8ACC876F}.Packaging|Any CPU.Build.0 = Packaging|Any CPU
+	EndGlobalSection
+EndGlobal

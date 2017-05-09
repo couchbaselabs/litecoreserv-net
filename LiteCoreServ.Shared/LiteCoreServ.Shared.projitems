@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{F8431439-C98C-4FA9-9623-6F0537BB492D}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>LiteCoreServ.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Options.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LiteCoreServFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebSocketTransport.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebSocketWrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SerialQueue.cs" />
+  </ItemGroup>
+</Project>
